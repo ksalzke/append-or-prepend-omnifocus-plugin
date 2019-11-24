@@ -35,7 +35,11 @@ var _ = (function() {
       prepend = formObject.values["prependSwitch"];
 
       selection.tasks.forEach(function(task) {
-        // process each selected task
+        if (prepend) {
+          task.name = textValue + task.name;
+        } else {
+          task.name = task.name + textValue;
+        }
       });
     });
   });
