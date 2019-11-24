@@ -1,0 +1,49 @@
+/*{
+	"type": "action",
+	"targets": ["omnifocus"],
+	"author": "Kaitlin Salzke",
+	"identifier": "com.KaitlinSalzke.AppendOrPrepend",
+	"version": "1.0",
+	"description": "Append or prepend text to the name of the selected task(s)",
+	"label": "Append or Prepend",
+	"shortLabel": "Append or Prepend"
+}*/
+var _ = (function() {
+  var action = new PlugIn.Action(function(selection, sender) {
+    // create and show form to decide append or prepend
+    var inputForm = new Form();
+
+    textField = new Form.Field.String(
+      "textInput",
+      "Text To Append/Prepend",
+      null
+    );
+    inputForm.addField(textField);
+
+    checkSwitchField = new Form.Field.Checkbox(
+      "prependSwitch",
+      "Prepend",
+      null
+    );
+    inputForm.addField(checkSwitchField);
+
+    formPrompt = "";
+    formPromise = inputForm.show(formPrompt, "Continue");
+
+    formPromise.then(function(formObject) {
+      textValue = formObject.values["textInput"];
+      prepend = formObject.values["prependSwitch"];
+
+      selection.tasks.forEach(function(task) {
+        // process each selected task
+      });
+    });
+  });
+
+  action.validate = function(selection, sender) {
+    return selection.tasks.length > 0;
+  };
+
+  return action;
+})();
+_;
