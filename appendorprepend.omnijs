@@ -8,8 +8,8 @@
 	"label": "Append or Prepend",
 	"shortLabel": "Append or Prepend"
 }*/
-var _ = (function() {
-  var action = new PlugIn.Action(function(selection, sender) {
+(() => {
+  var action = new PlugIn.Action(function (selection, sender) {
     // create and show form to decide append or prepend
     var inputForm = new Form();
 
@@ -30,11 +30,11 @@ var _ = (function() {
     formPrompt = "";
     formPromise = inputForm.show(formPrompt, "Continue");
 
-    formPromise.then(function(formObject) {
+    formPromise.then(function (formObject) {
       textValue = formObject.values["textInput"];
       prepend = formObject.values["prependSwitch"];
 
-      selection.tasks.forEach(function(task) {
+      selection.tasks.forEach(function (task) {
         if (prepend) {
           task.name = textValue + task.name;
         } else {
@@ -44,10 +44,9 @@ var _ = (function() {
     });
   });
 
-  action.validate = function(selection, sender) {
+  action.validate = function (selection, sender) {
     return selection.tasks.length > 0;
   };
 
   return action;
 })();
-_;
