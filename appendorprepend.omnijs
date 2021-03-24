@@ -1,52 +1,53 @@
-/*{
-	"type": "action",
-	"targets": ["omnifocus"],
-	"author": "Kaitlin Salzke",
-	"identifier": "com.KaitlinSalzke.AppendOrPrepend",
-	"version": "1.0",
-	"description": "Append or prepend text to the name of the selected task(s)",
-	"label": "Append or Prepend",
-	"shortLabel": "Append or Prepend"
-}*/
+/* global PlugIn Form */
+/* {
+"type": "action",
+"targets": ["omnifocus"],
+"author": "Kaitlin Salzke",
+"identifier": "com.KaitlinSalzke.AppendOrPrepend",
+"version": "1.0",
+"description": "Append or prepend text to the name of the selected task(s)",
+"label": "Append or Prepend",
+"shortLabel": "Append or Prepend"
+} */
 (() => {
-  var action = new PlugIn.Action(function (selection, sender) {
+  const action = new PlugIn.Action(function (selection, sender) {
     // create and show form to decide append or prepend
-    var inputForm = new Form();
+    const inputForm = new Form()
 
-    textField = new Form.Field.String(
-      "textInput",
-      "Text To Append/Prepend",
+    const textField = new Form.Field.String(
+      'textInput',
+      'Text To Append/Prepend',
       null
-    );
-    inputForm.addField(textField);
+    )
+    inputForm.addField(textField)
 
-    checkSwitchField = new Form.Field.Checkbox(
-      "prependSwitch",
-      "Prepend",
+    const checkSwitchField = new Form.Field.Checkbox(
+      'prependSwitch',
+      'Prepend',
       null
-    );
-    inputForm.addField(checkSwitchField);
+    )
+    inputForm.addField(checkSwitchField)
 
-    formPrompt = "";
-    formPromise = inputForm.show(formPrompt, "Continue");
+    const formPrompt = ''
+    const formPromise = inputForm.show(formPrompt, 'Continue')
 
     formPromise.then(function (formObject) {
-      textValue = formObject.values["textInput"];
-      prepend = formObject.values["prependSwitch"];
+      const textValue = formObject.values.textInput
+      const prepend = formObject.values.prependSwitch
 
       selection.tasks.forEach(function (task) {
         if (prepend) {
-          task.name = textValue + task.name;
+          task.name = textValue + task.name
         } else {
-          task.name = task.name + textValue;
+          task.name = task.name + textValue
         }
-      });
-    });
-  });
+      })
+    })
+  })
 
   action.validate = function (selection, sender) {
-    return selection.tasks.length > 0;
-  };
+    return selection.tasks.length > 0
+  }
 
-  return action;
-})();
+  return action
+})()
