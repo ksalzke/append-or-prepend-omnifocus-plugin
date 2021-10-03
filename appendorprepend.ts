@@ -6,7 +6,8 @@
 "version": "1.1",
 "description": "Append or prepend text to the name of the selected task(s)",
 "label": "Append or Prepend",
-"shortLabel": "Append or Prepend"
+"shortLabel": "Append or Prepend",
+"image": "text.append"
 }*/
 (() => {
   const action: PlugIn.Action = new PlugIn.Action(async (selection: any) => {
