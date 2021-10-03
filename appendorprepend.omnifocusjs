@@ -10,28 +10,17 @@
 "shortLabel": "Append or Prepend"
 }*/
 (() => {
-    const action = new PlugIn.Action((selection) => {
-        // create and show form to decide append or prepend
+    const action = new PlugIn.Action(async (selection) => {
+        // build form
         const inputForm = new Form();
-        const textField = new Form.Field.String('textInput', 'Text To Append/Prepend', null, null);
-        inputForm.addField(textField, null);
-        const checkSwitchField = new Form.Field.Checkbox('prependSwitch', 'Prepend', null);
-        inputForm.addField(checkSwitchField, null);
-        const formPrompt = '';
-        const formPromise = inputForm.show(formPrompt, 'Continue');
-        // Append/prepend text
-        formPromise.then((formObject) => {
-            const textValue = formObject.values.textInput;
-            const prepend = formObject.values.prependSwitch;
-            selection.tasks.forEach((task) => {
-                if (prepend) {
-                    task.name = textValue + task.name;
-                }
-                else {
-                    task.name = task.name + textValue;
-                }
-            });
-        });
+        inputForm.addField(new Form.Field.String('textInput', 'Text To Append/Prepend', null, null), null);
+        inputForm.addField(new Form.Field.Checkbox('prependSwitch', 'Prepend', null), null);
+        // show form
+        await inputForm.show('', 'Continue');
+        // get form values and adjust task name(s)
+        const textValue = inputForm.values.textInput;
+        const prepend = inputForm.values.prependSwitch;
+        selection.tasks.forEach((task) => task.name = prepend ? task.name = textValue + task.name : task.name + textValue);
     });
     action.validate = (selection) => {
         return selection.tasks.length > 0;

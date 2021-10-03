@@ -9,47 +9,17 @@
 "shortLabel": "Append or Prepend"
 }*/
 (() => {
-  const action: PlugIn.Action = new PlugIn.Action((selection: any) => {
-    // create and show form to decide append or prepend
-    const inputForm: Form = new Form()
-    const textField: Form.Field.String = new Form.Field.String(
-      'textInput',
-      'Text To Append/Prepend',
-      null,
-      null
-    )
-    inputForm.addField(textField, null)
-
-    const checkSwitchField: Form.Field.Checkbox = new Form.Field.Checkbox(
-      'prependSwitch',
-      'Prepend',
-      null
-    )
-    inputForm.addField(checkSwitchField, null)
-
-    interface PromptForm extends Form {
-      values: {
-        textInput: string,
-        prependSwitch: boolean
-      }
-    }
-
-    const formPrompt: string = ''
-    const formPromise: Promise<Form> = inputForm.show(formPrompt, 'Continue')
-
-    // Append/prepend text
-    formPromise.then((formObject: any) => { //TODO: Fix 'any'
-      const textValue: string = formObject.values.textInput
-      const prepend: boolean = formObject.values.prependSwitch
-
-      selection.tasks.forEach((task: Task) => {
-        if (prepend) {
-          task.name = textValue + task.name
-        } else {
-          task.name = task.name + textValue
-        }
-      })
-    })
+  const action: PlugIn.Action = new PlugIn.Action(async (selection: any) => {
+    // build form
+    const inputForm: any = new Form()
+    inputForm.addField(new Form.Field.String('textInput', 'Text To Append/Prepend', null, null), null)
+    inputForm.addField(new Form.Field.Checkbox('prependSwitch', 'Prepend', null), null)
+    // show form
+    await inputForm.show('', 'Continue')
+    // get form values and adjust task name(s)
+    const textValue: string = inputForm.values.textInput
+    const prepend: boolean = inputForm.values.prependSwitch
+    selection.tasks.forEach((task: Task) => task.name = prepend ? task.name = textValue + task.name : task.name + textValue)
   })
 
   action.validate = (selection: any) => {
