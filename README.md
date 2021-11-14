@@ -1,16 +1,16 @@
 # About
 
-This is an Omni Automation solitary plug-in for OmniFocus that allows the user to append or prepend text to the name of the selected task(s). Further details are provided below.
+This is an Omni Automation solitary plug-in for OmniFocus that allows the user to append or prepend text to the name of the selected task(s).
 
-_Please note that all scripts on my GitHub account (or shared elsewhere) are works in progress. If you encounter any issues or have any suggestions please let me know--and do please make sure you backup your database before running scripts from a random amateur on the internet!_
+_Please note that all scripts on my GitHub account (or shared elsewhere) are works in progress. If you encounter any issues or have any suggestions please let me know—and do please make sure you backup your database before running scripts from the internet!_
 
 ## Known issues
 
-Refer to the 'issues' in this repo for known issues and planned changes/enhancements.
+Refer to ['issues'](https://github.com/ksalzke/append-or-prepend-omnifocus-plugin/issues) for known issues and planned changes/enhancements.
 
 # Installation & Set-Up
 
-1. Click on the green `Clone or download` button above to download a `.zip` file of the file in this GitHub repository.
+1. Download the [latest release](https://github.com/ksalzke/append-or-prepend-omnifocus-plugin/releases/latest)
 2. Unzip the downloaded file.
 3. Move the `.omnifocusjs` file to your OmniFocus plug-in library folder (or open it to install).
 
