@@ -23,3 +23,10 @@ This action can be run on one or more selected tasks.
 It shows a form prompting the user for some text, and a 'prepend' checkbox. 
 
 Then, for each selected task, it appends or prepends the text entered by the user to the original name of the task. By default, the text is appended; if the 'prepend' checkbox is selected, the text is prepended.
+
+https://user-images.githubusercontent.com/16893787/141676804-23d54ad7-260e-4e3d-bedf-95514de0948d.mp4
+
+https://user-images.githubusercontent.com/16893787/141676813-0d9a409a-8b08-4d83-b4da-9f3590f24db1.mp4
+
+
+
