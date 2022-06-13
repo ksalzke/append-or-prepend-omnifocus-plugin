@@ -4,7 +4,7 @@
 "targets": ["omnifocus"],
 "author": "Kaitlin Salzke",
 "identifier": "com.KaitlinSalzke.AppendOrPrepend",
-"version": "1.1",
+"version": "1.2.0",
 "description": "Append or prepend text to the name of the selected task(s)",
 "label": "Append or Prepend",
 "shortLabel": "Append or Prepend",
