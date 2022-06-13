@@ -12,8 +12,7 @@
 }*/
 (() => {
     const action = new PlugIn.Action(async (selection) => {
-        const tasks = [...selection.tasks, ...selection.projects.map(p => p.task)]
-
+        const tasks = [...selection.tasks, ...selection.projects.map((p) => p.task)];
         // build form
         const inputForm = new Form();
         inputForm.addField(new Form.Field.String('textInput', 'Text To Append/Prepend', null, null), null);
