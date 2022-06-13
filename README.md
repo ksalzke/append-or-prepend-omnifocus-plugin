@@ -18,11 +18,11 @@ Refer to ['issues'](https://github.com/ksalzke/append-or-prepend-omnifocus-plugi
 
 ## Append or Prepend
 
-This action can be run on one or more selected tasks. 
+This action can be run on one or more selected tasks or projects. 
 
 It shows a form prompting the user for some text, and a 'prepend' checkbox. 
 
-Then, for each selected task, it appends or prepends the text entered by the user to the original name of the task. By default, the text is appended; if the 'prepend' checkbox is selected, the text is prepended.
+Then, for each selected task or projects, it appends or prepends the text entered by the user to the original name of the task. By default, the text is appended; if the 'prepend' checkbox is selected, the text is prepended.
 
 https://user-images.githubusercontent.com/16893787/141676804-23d54ad7-260e-4e3d-bedf-95514de0948d.mp4
 

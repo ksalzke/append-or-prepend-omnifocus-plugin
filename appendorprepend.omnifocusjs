@@ -12,6 +12,8 @@
 }*/
 (() => {
     const action = new PlugIn.Action(async (selection) => {
+        const tasks = [...selection.tasks, ...selection.projects.map(p => p.task)]
+
         // build form
         const inputForm = new Form();
         inputForm.addField(new Form.Field.String('textInput', 'Text To Append/Prepend', null, null), null);
@@ -21,10 +23,10 @@
         // get form values and adjust task name(s)
         const textValue = inputForm.values.textInput;
         const prepend = inputForm.values.prependSwitch;
-        selection.tasks.forEach((task) => task.name = prepend ? task.name = textValue + task.name : task.name + textValue);
+        tasks.forEach((task) => task.name = prepend ? task.name = textValue + task.name : task.name + textValue);
     });
     action.validate = (selection) => {
-        return selection.tasks.length > 0;
+        return selection.tasks.length + selection.projects.length > 0;
     };
     return action;
 })();
